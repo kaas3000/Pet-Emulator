@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 build
 build.log
 tmp
@@ -5,3 +6,8 @@ tmp
 .DS_Store*.class
 *.pyc
 *.pyo
+=======
+# Build folder and log file
+build/
+build.log
+>>>>>>> 357f4292c9b49b3ca751809264d191a2eb000bb2
