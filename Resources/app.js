@@ -1,4 +1,4 @@
-require('js/functionsjs');
+Ti.include('js/functions.js');
 
 //create the win1dow
 var win1 = Titanium.UI.createWindow({
