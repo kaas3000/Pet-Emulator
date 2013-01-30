@@ -34,6 +34,13 @@ var btnLeft = Ti.UI.createImageView({
 	image: 'img/Orange/Button0.gif'
 });
 
+btnLeft.addEventListener('touchstart', function(e){
+	btnLeft.image = 'img/Orange/Button1.gif';
+});
+btnLeft.addEventListener('touchend', function(e){
+	btnLeft.image = 'img/Orange/Button0.gif';
+});
+
 // maak het middelste knopje
 var btnMiddle = Ti.UI.createImageView({
 	width: 16,
@@ -41,6 +48,13 @@ var btnMiddle = Ti.UI.createImageView({
 	top: background.top + 145,
 	left: background.left + 64,
 	image: 'img/Orange/Button0.gif'
+});
+
+btnMiddle.addEventListener('touchstart', function(e){
+	btnMiddle.image = 'img/Orange/Button1.gif';
+});
+btnMiddle.addEventListener('touchend', function(e){
+	btnMiddle.image = 'img/Orange/Button0.gif';
 });
 
 // maak het rechterknopje
@@ -52,12 +66,19 @@ var btnRight = Ti.UI.createImageView({
 	image: 'img/Orange/Button0.gif'
 });
 
+btnRightr.addEventListener('touchstart', function(e){
+	btnRight.image = 'img/Orange/Button1.gif';
+});
+btnRight.addEventListener('touchend', function(e){
+	btnRight.image = 'img/Orange/Button0.gif';
+});
+
 // voeg de knopjes aan win1 toe
 win1.add(btnLeft);
 win1.add(btnMiddle);
 win1.add(btnRight);
 
-// maak het "schermpje"
+// maak het "schermpje" van de tamagotchi
 
 /** 
  * Let op: het schermpje hoeft niet verder
@@ -77,22 +98,5 @@ win1.add(screen);
 win1.open();
 
 Ti.Gesture.addEventListener('orientationchange', function(e){
-	// // resize win1
-	// win1.width = Ti.Platform.displayCaps.platformWidth;
-	// win1.height = Ti.Platform.displayCaps.platformHeight;
-// 	
-	// // herpositioneer background
-	// background.top = (win1.height / 2) - (backgroundHeight / 2);
-	// background.left = (win1.width / 2) - (backgroundWidth / 2);
-// 	
-	// // herpositioneer alle knoppen
-	// btnLeft.top = background.top + 135;
-	// btnLeft.left = background.left + 38;
-// 	
-	// btnMiddle.top = background.top + 145;
-	// btnMiddle.left = background.left + 64;
-// 	
-	// btnRight.top = background.top + 135;
-	// btnRight.left = background.left + 90;
-	reloadScrn();
+	reloadScrn(); // zie js/functions.js
 });
