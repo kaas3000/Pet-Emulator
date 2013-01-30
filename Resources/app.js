@@ -94,7 +94,7 @@ var screen = Ti.UI.createImageView({
 // voeg het schermpje toe
 win1.add(screen);
 
-//finally, open the window to launch the app
+// open win1, zodat de gebruiker ook wat te zien krijgt
 win1.open();
 
 Ti.Gesture.addEventListener('orientationchange', function(e){
