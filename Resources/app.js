@@ -1,11 +1,11 @@
 Ti.include('js/functions.js');
+Ti.include('js/homeIcons.js');
 
 //create the win1dow
 var win1 = Titanium.UI.createWindow({
 	width: Ti.Platform.displayCaps.platformWidth,
 	height: Ti.Platform.displayCaps.platformHeight,
-	backgroundColor: 'black',
-	title: 'Bier is lekker!'
+	backgroundColor: 'black'
 });
 
 // het plaatje van de tamagotchi
@@ -23,6 +23,16 @@ var background = Titanium.UI.createImageView({
 
 // voeg het plaatje gelijk aan het scherm toe
 win1.add(background);
+
+
+// Maak de homeicoontjes alvast aan
+var homeIcon = Ti.UI.createImageView({
+	// width: 18,
+	// height: 18,
+	image: 'img/extra/TamIcon0.gif'
+});
+
+win1.add(homeIcon);
 
 
 // maak het linkerknopje
@@ -57,6 +67,12 @@ btnMiddle.addEventListener('touchend', function(e){
 	btnMiddle.image = 'img/Orange/Button0.gif';
 });
 
+// Voeg een als-erop-geklikt-word-event toe
+btnMiddle.addEventListener('click', function(e){
+	setHomeIcon(1);
+	Ti.API.info("bier is lekker");
+});
+
 // maak het rechterknopje
 var btnRight = Ti.UI.createImageView({
 	width: 16,
@@ -66,7 +82,7 @@ var btnRight = Ti.UI.createImageView({
 	image: 'img/Orange/Button0.gif'
 });
 
-btnRightr.addEventListener('touchstart', function(e){
+btnRight.addEventListener('touchstart', function(e){
 	btnRight.image = 'img/Orange/Button1.gif';
 });
 btnRight.addEventListener('touchend', function(e){
