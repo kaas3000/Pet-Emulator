@@ -50,19 +50,13 @@ win1.add(homeIcon);
 
 
 // maak het linkerknopje
-var btnLeft = Ti.UI.createImageView({
+var btnLeft = Ti.UI.createButton({
 	width: 16,
 	height: 16,
 	top: background.top + 135,
 	left: background.left + 38,
-	image: 'img/Orange/Button0.gif'
-});
-
-btnLeft.addEventListener('touchstart', function(e){
-	btnLeft.image = 'img/Orange/Button1.gif';
-});
-btnLeft.addEventListener('touchend', function(e){
-	btnLeft.image = 'img/Orange/Button0.gif';
+	backgroundImage: 'img/Orange/Button0.gif',
+	backgroundSelectedImage: 'img/Orange/Button1.gif'
 });
 
 // Voeg een als-erop-geklikt-word-event toe
@@ -77,14 +71,8 @@ var btnMiddle = Ti.UI.createImageView({
 	height: 16,
 	top: background.top + 145,
 	left: background.left + 64,
-	image: 'img/Orange/Button0.gif'
-});
-
-btnMiddle.addEventListener('touchstart', function(e){
-	btnMiddle.image = 'img/Orange/Button1.gif';
-});
-btnMiddle.addEventListener('touchend', function(e){
-	btnMiddle.image = 'img/Orange/Button0.gif';
+	backgroundImage: 'img/Orange/Button0.gif',
+	backgroundSelectedImage: 'img/Orange/Button1.gif'
 });
 
 // Voeg een als-erop-geklikt-word-event toe
@@ -98,14 +86,8 @@ var btnRight = Ti.UI.createImageView({
 	height: 16,
 	top: background.top + 135,
 	left: background.left + 90,
-	image: 'img/Orange/Button0.gif'
-});
-
-btnRight.addEventListener('touchstart', function(e){
-	btnRight.image = 'img/Orange/Button1.gif';
-});
-btnRight.addEventListener('touchend', function(e){
-	btnRight.image = 'img/Orange/Button0.gif';
+	backgroundImage: 'img/Orange/Button0.gif',
+	backgroundSelectedImage: 'img/Orange/Button1.gif'
 });
 
 // Voeg een als-erop-geklikt-word-event toe
