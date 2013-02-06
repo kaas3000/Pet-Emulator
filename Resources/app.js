@@ -42,9 +42,8 @@ win1.add(screen);
 
 // Maak de homeicoontjes alvast aan
 var homeIcon = Ti.UI.createImageView({
-	// width: 18,
-	// height: 18,
-	image: 'img/extra/TamIcon0.gif'
+	width: 18,
+	height: 18
 });
 
 win1.add(homeIcon);
@@ -66,6 +65,12 @@ btnLeft.addEventListener('touchend', function(e){
 	btnLeft.image = 'img/Orange/Button0.gif';
 });
 
+// Voeg een als-erop-geklikt-word-event toe
+btnLeft.addEventListener('click', function(e){
+	setNextHomeIcon();
+});
+
+
 // maak het middelste knopje
 var btnMiddle = Ti.UI.createImageView({
 	width: 16,
@@ -84,8 +89,7 @@ btnMiddle.addEventListener('touchend', function(e){
 
 // Voeg een als-erop-geklikt-word-event toe
 btnMiddle.addEventListener('click', function(e){
-	setHomeIcon(1);
-	Ti.API.info("bier is lekker");
+	setHomeIcon(3);
 });
 
 // maak het rechterknopje
@@ -103,6 +107,12 @@ btnRight.addEventListener('touchstart', function(e){
 btnRight.addEventListener('touchend', function(e){
 	btnRight.image = 'img/Orange/Button0.gif';
 });
+
+// Voeg een als-erop-geklikt-word-event toe
+btnRight.addEventListener('click', function(e){
+	setHomeIcon(0);
+});
+
 
 // voeg de knopjes aan win1 toe
 win1.add(btnLeft);
