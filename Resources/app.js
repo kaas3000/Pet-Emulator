@@ -8,6 +8,13 @@ var win1 = Titanium.UI.createWindow({
 	backgroundColor: 'black'
 });
 
+// Benodigde variabelen
+var pet;
+
+var sick = false;
+var hungry = false;
+var imgSkull;
+
 // het plaatje van de tamagotchi
 var backgroundWidth = 140;
 var backgroundHeight = 170;
@@ -25,7 +32,6 @@ var background = Titanium.UI.createImageView({
 win1.add(background);
 
 // maak het "schermpje" van de tamagotchi
-
 /** 
  * Let op: het schermpje hoeft niet verder
  * gepositioneerd te worden, omdat het altijd
@@ -66,7 +72,7 @@ btnLeft.addEventListener('click', function(e){
 
 
 // maak het middelste knopje
-var btnMiddle = Ti.UI.createImageView({
+var btnMiddle = Ti.UI.createButton({
 	width: 16,
 	height: 16,
 	top: background.top + 145,
@@ -77,11 +83,36 @@ var btnMiddle = Ti.UI.createImageView({
 
 // Voeg een als-erop-geklikt-word-event toe
 btnMiddle.addEventListener('click', function(e){
-	setHomeIcon(3);
+	switch(currentIcon) {
+		case 1:
+		break;
+		
+		case 2:
+		break;
+		
+		case 3:
+		break;
+		
+		case 4:
+			removeIllness();
+		break;
+		
+		case 5:
+		break;
+		
+		case 6:
+		break;
+		
+		case 7:
+		break;
+		
+		default:
+			makeIll();
+	}
 });
 
 // maak het rechterknopje
-var btnRight = Ti.UI.createImageView({
+var btnRight = Ti.UI.createButton({
 	width: 16,
 	height: 16,
 	top: background.top + 135,
@@ -101,6 +132,8 @@ win1.add(btnLeft);
 win1.add(btnMiddle);
 win1.add(btnRight);
 
+// Teken het huisdier
+drawPet();
 
 // open win1, zodat de gebruiker ook wat te zien krijgt
 win1.open();
