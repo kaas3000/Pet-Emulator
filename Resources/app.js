@@ -13,7 +13,7 @@ var pet;
 
 var sick = false;
 var hungry = false;
-var imgSkull;
+var imgSkull = "";
 
 // het plaatje van de tamagotchi
 var backgroundWidth = 140;

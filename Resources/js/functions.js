@@ -16,9 +16,17 @@ function reloadScrn() {
 	
 	btnRight.top = background.top + 135;
 	btnRight.left = background.left + 90;
+	
+	drawPet();
+	
+	imgSkull.top = pet.top;
+	imgSkull.left = background.left + 90;
 }
 
 function drawPet() {
+	// just in case...
+	win1.remove(pet);
+	
 	pet = Ti.UI.createImageView({
 		width: 32,
 		height: 32,
@@ -30,7 +38,7 @@ function drawPet() {
 	win1.add(pet);
 	
 	var animateMove = Ti.UI.createAnimation({
-		duration: 8000,
+		duration: 3000,
 		left: 40,
 		autoreverse: true
 	});
