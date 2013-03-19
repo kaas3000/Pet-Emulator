@@ -13,7 +13,9 @@ var pet;
 
 var sick = false;
 var hungry = false;
-var imgSkull = "";
+var age = 1;
+var imgSkull;
+var intRandom;
 
 // het plaatje van de tamagotchi
 var backgroundWidth = 140;
@@ -137,6 +139,32 @@ drawPet();
 
 // open win1, zodat de gebruiker ook wat te zien krijgt
 win1.open();
+
+// laat random een actie gebeuren, zoals ziek worden of hongerig etc.
+intRandom = Math.floor(Math.random()*30000);
+
+(function loopIll(){
+	setTimeout((function(){
+		makeIll();
+	}), intRandom);
+}());
+
+// verander elke dag(=86400000ms) het poppetje en de leeftijd
+setInterval(function(){
+	age++;
+	if (age < 9) {
+		celebrateBirthday(age); // verandert het poppetje ;)
+	}
+	
+	// geef een notificatie met een felicitatie. dan kun je ook gelijk zijn leeftijd zien ;)
+	var notification = Ti.Android.createNotification({
+		contentTitle: 'Gefeliciteerd!',
+		contentText: 'Je huisdier is jarig. Hij is ' + age + ' jaar geworden.',
+		tickerText: 'Het is feest',
+		when: new Date().getTime()
+	});
+	Ti.Android.NotificationManager.notify(2, notification);
+}, 10000);
 
 Ti.Gesture.addEventListener('orientationchange', function(e){
 	reloadScrn(); // zie js/functions.js

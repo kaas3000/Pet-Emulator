@@ -32,7 +32,7 @@ function drawPet() {
 		height: 32,
 		top: background.top + 70,
 		left: background.left + 35,
-		image: 'img/extra/Angel0.png'
+		image: 'img/android/android1.png'
 	});
 	
 	win1.add(pet);
@@ -48,6 +48,7 @@ function drawPet() {
 	animateMove.addEventListener('complete', function(e){
 		if (sick == true){
 			animateMove.left = background.left + 59;
+			win1.add(imgSkull);
 		} else {
 			animateMove.left = background.left + 74;
 		}
@@ -58,6 +59,9 @@ function drawPet() {
 
 function makeIll() {
 	sick = true;
+	intRandom = Math.floor(Math.random()*30000);
+	
+	// voeg het "zieke" plaatje toe
 	imgSkull = Ti.UI.createImageView({
 		width: 15,
 		height: 15,
@@ -65,11 +69,59 @@ function makeIll() {
 		left: background.left + 90,
 		image: 'img/extra/Skull.gif'
 	});
-	win1.add(imgSkull);
+	
+	// zorg voor de notificatie
+	var notification = Ti.Android.createNotification({
+		contentTitle: 'Je huisdier is ziek!',
+		contentText: 'Ga snel naar tamagotchi toe en maak hem beter',
+		tickerText: 'Je huisdier heeft je hulp nodig, en snel!',
+		ledARGB: 1,
+		when: new Date().getTime() + intRandom
+	});
+	Ti.Android.NotificationManager.notify(1, notification);
+	
+	setTimeout((function(){
+		makeIll();
+	}), intRandom);
 }
 
 function removeIllness() {
 	sick = false;
 	win1.remove(imgSkull);
 	imgSkull = null;
+}
+
+function celebrateBirthday (age) {
+  switch (age) {
+  	case 2:
+  		pet.image = 'img/android/android2.png';
+	break;
+	
+	case 3:
+		pet.image = 'img/android/android3.png';
+	break;
+	
+	case 4:
+		pet.image = 'img/android/android4.png';
+	break;
+	
+	case 5:
+		pet.image = 'img/android/android5.png';
+	break;
+	
+	case 6:
+		pet.image = 'img/android/android6.png';
+	break;
+	
+	case 7:
+		pet.image = 'img/android/android7.png';
+	break;
+	
+	case 8:
+		pet.image = 'img/android/android8.png';
+	break;
+	
+	default:
+		pet.image = 'img/android/android1.png';
+  }
 }
