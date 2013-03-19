@@ -10,12 +10,14 @@ var win1 = Titanium.UI.createWindow({
 
 // Benodigde variabelen
 var pet;
-
 var sick = false;
+var dirty = 0;
 var hungry = false;
 var age = 1;
 var imgSkull;
+var imgDung;
 var intRandom;
+var intRandDirty;
 
 // het plaatje van de tamagotchi
 var backgroundWidth = 140;
@@ -93,6 +95,8 @@ btnMiddle.addEventListener('click', function(e){
 		break;
 		
 		case 3:
+			dirty = 1;
+			makeDirty();
 		break;
 		
 		case 4:
@@ -100,6 +104,7 @@ btnMiddle.addEventListener('click', function(e){
 		break;
 		
 		case 5:
+			makeClean();
 		break;
 		
 		case 6:
@@ -109,7 +114,6 @@ btnMiddle.addEventListener('click', function(e){
 		break;
 		
 		default:
-			makeIll();
 	}
 });
 
@@ -142,11 +146,21 @@ win1.open();
 
 // laat random een actie gebeuren, zoals ziek worden of hongerig etc.
 intRandom = Math.floor(Math.random()*30000);
-
 (function loopIll(){
 	setTimeout((function(){
 		makeIll();
 	}), intRandom);
+}());
+
+// laat het beest steeds viezer worden
+intRandDirty = 1000;
+(function loopDirty(){
+	setInterval((function(){
+		dirty += .1;
+		if (dirty > 1) {
+			makeDirty();
+		}
+	}), intRandDirty);
 }());
 
 // verander elke dag(=86400000ms) het poppetje en de leeftijd

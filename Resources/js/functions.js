@@ -49,7 +49,12 @@ function drawPet() {
 		if (sick == true){
 			animateMove.left = background.left + 59;
 			win1.add(imgSkull);
-		} else {
+		}
+		else if (dirty >= 1) {
+			animateMove.left = background.left + 59;
+			win1.add (imgDung);
+		}
+		else {
 			animateMove.left = background.left + 74;
 		}
 		
@@ -88,7 +93,35 @@ function makeIll() {
 function removeIllness() {
 	sick = false;
 	win1.remove(imgSkull);
-	imgSkull = null;
+	imgSkull = undefined;
+}
+
+function makeDirty() {
+	// voeg het "vieze" plaatje toe
+	imgDung = Ti.UI.createView({
+		width: 15,
+		height: 15,
+		bottom: pet.bottom,
+		left: background.left + 90,
+		backgroundImage: 'img/extra/Dung0.gif'
+	});
+	
+	// zorg voor de notificatie
+	var notification = Ti.Android.createNotification({
+		contentTitle: 'Je huisdier is smerig!',
+		contentText: 'Beter snel naar tamagotchi toe en was hem',
+		tickerText: 'Je huisdier heeft je hulp nodig, en snel!',
+		ledARGB: 1,
+		when: new Date().getTime() + intRandDirty
+	});
+	Ti.Android.NotificationManager.notify(3, notification);
+}
+
+function makeClean() {
+	dirty = 0;
+	imgDung.visible = false;
+	win1.remove(imgDung);
+	imgDung = undefined;
 }
 
 function celebrateBirthday (age) {
